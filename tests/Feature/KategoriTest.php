@@ -24,6 +24,15 @@ class KategoriTest extends TestCase
         $res->assertStatus(409)->assertJson(['error' => 'kategori Sudah Ada']);
     }
 
+    public function test_index_returns_list()
+    {
+        Kategori::create(['name' => 'a']);
+        Kategori::create(['name' => 'b']);
+        $res = $this->getJson('/api/kategori');
+        $res->assertStatus(200)->assertJsonStructure(['data' => [['id','name','created_at']]]);
+        $this->assertCount(2, $res->json('data'));
+    }
+
     public function test_delete_not_found()
     {
         $res = $this->deleteJson('/api/kategori/999');

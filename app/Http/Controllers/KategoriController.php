@@ -8,6 +8,12 @@ use Illuminate\Support\Str;
 
 class KategoriController extends Controller
 {
+    public function index()
+    {
+        $items = Kategori::orderBy('name')->get(['id', 'name', 'created_at']);
+        return response(['data' => $items], 200);
+    }
+
     public function store(Request $request)
     {
         $data = $request->validate([

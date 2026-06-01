@@ -2,18 +2,47 @@ buatkan issue.md yang nanti diimplementasi oleh junior programmer atau ai model 
 
 isi dari perencanaannya sebagai berikut :
 
-buat tabel kategori:
+buat tabel pengeluaran:
 id integer auto increment
-name varchar 255 not null
+nama varchar 255 not null
+kategori_id int
+tgl datetime
 created_at timestamp default current_timestamp
 
-buatkan api untuk tambah kategori
-endpoint : POST /api/kategori
+buatkan api untuk get pengeluaran
+endpoint : GET /api/pengeluaran
+
+Response Body Success : 
+{
+    "data": []
+}
+
+buatkan api untuk get pengeluaran dengan tahun bulan tanggal spesifik dan bisa hanya salah satu (tahun, bulan, tanggal)
+endpoint : GET /api/pengeluaran/{tahun}/{tanggal}/{bulan}
+
+Response Body Success : 
+{
+    "data": "OK"
+}
+
+buatkan api untuk tambah pengeluaran
+endpoint : POST /api/pengeluaran
 
 Request Body : 
 {
-    "nama": "eko",
+    "nama": "Beli Makan Siang",
+    "kategori_id": 3,
+    "tgl": 2026-06-01
 }
+
+Response Body Success : 
+{
+    "data": "OK"
+}
+
+
+buatkan api untuk hapus pengeluaran
+endpoint : DELETE /api/pengeluaran/{id}
 
 Response Body Success : 
 {
@@ -22,38 +51,22 @@ Response Body Success :
 
 Response Body Error :
 {
-    "error": "kategori Sudah Ada"
+    "error": "Pengeluaran Tidak Ada"
 }
 
-buatkan api untuk hapus kategori
-endpoint : DELETE /api/kategori/{id}
-
-Response Body Success : 
-{
-    "data": "OK"
-}
-
-Response Body Error :
-{
-    "error": "kategori Tidak Ada"
-}
-
-buatkan api untuk edit kategori
-endpoint : PUST /api/kategori/{id}
+buatkan api untuk edit pengeluaran
+endpoint : PUT /api/pengeluaran/{id}
 
 Request Body : 
 {
-    "nama": "eko",
+    "nama": "Beli Makan Siang",
+    "kategori_id": 3,
+    "tgl": 2026-06-01
 }
 
 Response Body Success : 
 {
     "data": "OK"
-}
-
-Response Body Error :
-{
-    "error": "kategori Sudah Ada"
 }
 
 jelaskan tahapan - tahapan yang dilakukan untuk mengimplementasikan fitur ini, anggap nanti yang mengimplementasikan adalah junior programmer atau mode AI yang lebih murah
